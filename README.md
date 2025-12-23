@@ -82,14 +82,15 @@ airplane/
 ├── models.py        # Airport model (tree structure)
 ├── forms.py         # Forms for input and validation
 ├── views.py         # Core logic and routing
-├── templates/
-│   └── airplane/
-│       ├── base.html
-│       ├── tree.html
-│       ├── add_airport.html
-│       ├── nth_node.html
-│       ├── longest_node.html
-│       └── shortest_between.html
+
+templates/
+|── airplane/
+    ├── base.html
+    ├── tree.html
+    ├── add_airport.html
+    ├── nth_node.html
+    ├── longest_node.html
+    └── shortest_between.html
 ```
 
 ---

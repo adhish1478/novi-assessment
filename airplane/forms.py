@@ -24,6 +24,16 @@ class AirportForm(forms.ModelForm):
         # Root node should not have position
         if not parent:
             cleaned['position'] = None
+        
+        # Check if same position already exists
+        existing_child = Airport.objects.filter(
+            parent=parent,
+            position=position
+        ).first()
+
+        if existing_child:
+            # Delete old child and its subtree
+            existing_child.delete()
 
         return cleaned
 
