@@ -1,0 +1,11 @@
+{% extends "airplane/base.html" %}
+{% block content %}
+
+<h2>Longest Node</h2>
+{% if node %}
+  <p>{{ node.airport_code }} — {{ node.duration }}</p>
+{% else %}
+  <p>No data</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% if node %}
+  <div class="tree-node">
+
+    <!-- Current airport box -->
+    <div class="node-box">
+      {{ node.airport_code }}
+      <div class="duration">
+        {{ node.duration }}
+      </div>
+    </div>
+
+    <!-- Render children if present -->
+    {% if node.left_child or node.right_child %}
+      <div class="children-row">
+
+        <div class="child-slot">
+          {% if node.left_child %}
+            {% include "airplane/tree.html" with node=node.left_child %}
+          {% endif %}
+        </div>
+
+        <div class="child-slot">
+          {% if node.right_child %}
+            {% include "airplane/tree.html" with node=node.right_child %}
+          {% endif %}
+        </div>
+
+      </div>
+    {% endif %}
+
+  </div>
+{% endif %}

@@ -1,0 +1,17 @@
+{% extends "airplane/base.html" %}
+{% block content %}
+
+<h2>Find Nth Left / Right Node</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Search</button>
+</form>
+
+{% if result %}
+  <p>Result: {{ result.airport_code }} ({{ result.duration }})</p>
+{% else %}
+  <p>No result</p>
+{% endif %}
+
+{%endblock%}

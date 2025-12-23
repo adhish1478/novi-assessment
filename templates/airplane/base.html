@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight Routes</title>
+
+  <!-- Basic styling only, no frameworks -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      gap: 40px;
+    }
+
+    .tree-container {
+      min-width: 400px;
+    }
+
+    .tree-node {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .node-box {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 2px solid #333;
+      border-radius: 6px;
+      background: #f9f9f9;
+      font-weight: bold;
+    }
+
+    .duration {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .children-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 30px;
+    }
+
+    .child-slot {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav button {
+      margin-right: 10px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Flight Routes System</h1>
+
+<div class="container">
+
+  <!-- LEFT: Tree visualization -->
+  <div class="tree-container">
+    <h3>Current Route Tree</h3>
+
+    {% for root in tree %}
+      {% include "airplane/tree.html" with node=root %}
+    {% endfor %}
+  </div>
+
+  <!-- RIGHT: Page specific content -->
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+</div>
+
+<h3>Calculate</h3>
+
+<!-- Simple navigation -->
+<nav>
+  <a href="{% url 'add_airport' %}">
+    <button>Add Airport</button>
+  </a>
+
+  <a href="{% url 'nth-node' %}">
+    <button>Nth Left / Right</button>
+  </a>
+
+  <a href="{% url 'longest-node' %}">
+    <button>Longest Route</button>
+  </a>
+
+  <a href="{% url 'shortest-node' %}">
+    <button>Shortest Between</button>
+  </a>
+</nav>
+
+</body>
+</html>
